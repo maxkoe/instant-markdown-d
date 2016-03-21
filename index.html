@@ -17,12 +17,12 @@
   <script src="/socket.io/socket.io.js"></script>
   <script>
     var socket = io.connect('http://localhost:8090/');
-    socket.on('connect', function () {
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]); });
+    socket.on('connect', function () { 
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]); });
     socket.on('connect', function () {
       socket.on('newContent', function(newHTML) {
-                document.querySelector(".markdown-body").innerHTML = newHTML;
-                  //MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        document.querySelector(".markdown-body").innerHTML = newHTML;
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
       });
       socket.on('die', function(newHTML) {
         window.open('', '_self', '');
@@ -37,15 +37,15 @@
     });
   </script>
   <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\[","\]"] ],
-      }
-          });
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\[","\]"] ],
+          }
+      });
   </script>
   <script type="text/javascript"
-  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+    src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_MML">
   </script>
 </head>
 <body>
