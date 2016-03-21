@@ -19,7 +19,8 @@
     var socket = io.connect('http://localhost:8090/');
     socket.on('connect', function () {
       socket.on('newContent', function(newHTML) {
-        document.querySelector(".markdown-body").innerHTML = newHTML;
+                document.querySelector(".markdown-body").innerHTML = newHTML;
+                  MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
       });
       socket.on('die', function(newHTML) {
         window.open('', '_self', '');
@@ -32,6 +33,9 @@
         document.body.innerHTML = firefoxWarning;
       });
     });
+  </script>
+  <script type="text/javascript"
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script>
 </head>
 <body>
