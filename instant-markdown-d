@@ -58,6 +58,14 @@ function httpHandler(req, res) {
       if (package_urls.indexOf(url) >= 0) {
         root = __dirname;
       }
+      var githubUrlRelative = req.url.match(/(.+(?:\.png|\.jpg|\.gif)$)/);
+      if (githubUrlRelative) {
+         // Serve the file out of the current working directory
+        send(req, githubUrlRelative[1])
+         .root(process.cwd())
+         .pipe(res);
+        return;
+      }
 
       // Support absolute urls to github files (no longer required,
       // github now also supports relative urls, but for compatibility
